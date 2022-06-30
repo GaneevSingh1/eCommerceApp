@@ -1,6 +1,12 @@
 package com.example.ecommerceapp.models;
 
 public class Item {
+
+    public enum ItemStatus
+    {
+        ORDERED, IN_SHIPPING, DELIVERED
+    };
+
     private int id;
     private int orderNumber;
     private String name;
@@ -9,12 +15,13 @@ public class Item {
     private int numSold;
     private int numDamaged;
     private int numWrittenOff;
-    private String itemsStatus;
+    private ItemStatus itemsStatus;
     private int purchasePrice;
     private int shippingPerItem;
     private int totalCostPerItem;
+    private int sellPrice;
 
-    public Item(int id, int orderNumber, String name, int quantityOrdered, int numInStock, int numSold, int numDamaged, int numWrittenOff, String itemsStatus, int purchasePrice, int shippingPerItem) {
+    public Item(int id, int orderNumber, String name, int quantityOrdered, int numInStock, int numSold, int numDamaged, int numWrittenOff, ItemStatus itemsStatus, int purchasePrice, int shippingPerItem, int sellPrice) {
         this.id = id;
         this.orderNumber = orderNumber;
         this.name = name;
@@ -26,6 +33,7 @@ public class Item {
         this.itemsStatus = itemsStatus;
         this.purchasePrice = purchasePrice;
         this.shippingPerItem = shippingPerItem;
+        this.sellPrice = sellPrice;
 
         this.totalCostPerItem = purchasePrice + shippingPerItem;
     }
@@ -94,11 +102,11 @@ public class Item {
         this.numWrittenOff = numWrittenOff;
     }
 
-    public String getItemsStatus() {
+    public ItemStatus getItemsStatus() {
         return itemsStatus;
     }
 
-    public void setItemsStatus(String itemsStatus) {
+    public void setItemsStatus(ItemStatus itemsStatus) {
         this.itemsStatus = itemsStatus;
     }
 
@@ -124,5 +132,13 @@ public class Item {
 
     public void setTotalCostPerItem(int totalCostPerItem) {
         this.totalCostPerItem = totalCostPerItem;
+    }
+
+    public int getSellPrice() {
+        return sellPrice;
+    }
+
+    public void setSellPrice(int sellPrice) {
+        this.sellPrice = sellPrice;
     }
 }
