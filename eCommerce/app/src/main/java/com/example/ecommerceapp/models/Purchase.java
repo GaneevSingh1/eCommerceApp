@@ -14,21 +14,23 @@ public class Purchase {
 
     private int customerID;
     private int itemID;
+    private int categoryID;
     private int quantity;
     private int soldPrice;
-    private boolean delivery;
+    private boolean deliveryRequired;
     private boolean paymentReceived;
     private boolean itemReceived;
     private PaymentMethod paymentMethod;
 
-    public Purchase(int id, String date, int customerID, int itemID, int quantity, int soldPrice, boolean delivery, boolean paymentReceived, boolean itemReceived, PaymentMethod paymentMethod) {
+    public Purchase(int id, String date, int customerID, int itemID, int categoryID, int quantity, int soldPrice, boolean delivery, boolean paymentReceived, boolean itemReceived, PaymentMethod paymentMethod) {
         this.id = id;
         this.date = date;
         this.customerID = customerID;
         this.itemID = itemID;
+        this.categoryID = categoryID;
         this.quantity = quantity;
         this.soldPrice = soldPrice;
-        this.delivery = delivery;
+        this.deliveryRequired = delivery;
         this.paymentReceived = paymentReceived;
         this.itemReceived = itemReceived;
         this.paymentMethod = paymentMethod;
@@ -66,6 +68,14 @@ public class Purchase {
         this.itemID = itemID;
     }
 
+    public int getCategoryID() {
+        return categoryID;
+    }
+
+    public void setCategoryID(int categoryID) {
+        this.categoryID = categoryID;
+    }
+
     public int getQuantity() {
         return quantity;
     }
@@ -82,12 +92,12 @@ public class Purchase {
         this.soldPrice = soldPrice;
     }
 
-    public boolean isDelivery() {
-        return delivery;
+    public boolean isDeliveryRequired() {
+        return deliveryRequired;
     }
 
-    public void setDelivery(boolean delivery) {
-        this.delivery = delivery;
+    public void setDeliveryRequired(boolean deliveryRequired) {
+        this.deliveryRequired = deliveryRequired;
     }
 
     public boolean isPaymentReceived() {
