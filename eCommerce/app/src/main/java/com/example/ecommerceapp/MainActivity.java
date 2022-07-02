@@ -134,13 +134,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.menu_option_3:
                 fragmentManager.beginTransaction()
-                        .replace(R.id.fragment_container_view, SalesFragment.class, null)
+                        .replace(R.id.fragment_container_view, ItemsFragment.class, null)
                         .addToBackStack(null)
                         .commit();
                 break;
             case R.id.menu_option_4:
                 fragmentManager.beginTransaction()
-                        .replace(R.id.fragment_container_view, SalesFragment.class, null)
+                        .replace(R.id.fragment_container_view, CustomersFragment.class, null)
                         .addToBackStack(null)
                         .commit();
                 break;
