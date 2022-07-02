@@ -1,11 +1,8 @@
 package com.example.ecommerceapp.models;
 
-public class Item {
+import com.example.ecommerceapp.ItemStatus;
 
-    public enum ItemStatus
-    {
-        ORDERED, IN_SHIPPING, DELIVERED
-    };
+public class Item {
 
     private int id;
     private int orderNumber;
@@ -36,6 +33,12 @@ public class Item {
         this.sellPrice = sellPrice;
 
         this.totalCostPerItem = purchasePrice + shippingPerItem;
+    }
+
+    public Item(int id, String name, int sellPrice) {
+        this.id = id;
+        this.name = name;
+        this.sellPrice = sellPrice;
     }
 
     public int getId() {
