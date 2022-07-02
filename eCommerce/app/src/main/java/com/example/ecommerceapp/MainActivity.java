@@ -8,6 +8,7 @@ import androidx.biometric.BiometricPrompt;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private BiometricPrompt.PromptInfo promptInfo;
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
+    private FragmentManager fragmentManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         mDrawerLayout.addDrawerListener(mDrawerToggle);
         mDrawerToggle.syncState();
+
+        fragmentManager = getSupportFragmentManager();
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -51,8 +55,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE:
                 Toast.makeText(getApplicationContext(), "Fingerprint Not Working", Toast.LENGTH_LONG).show();
+                break;
             case BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED:
                 Toast.makeText(getApplicationContext(), "No Fingerprint Assigned", Toast.LENGTH_LONG).show();
+                break;
         }
 
         Executor executor = ContextCompat.getMainExecutor(this);
@@ -92,6 +98,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         biometricPrompt.authenticate(promptInfo);
 
+        fragmentManager.beginTransaction()
+                .setReorderingAllowed(true)
+                .add(R.id.fragment_container_view, SummaryFragment.class, null)
+                .commit();
+
     }
 
     @Override
@@ -110,16 +121,29 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Intent ItemsIntent;
         switch (item.getItemId()) {
             case R.id.menu_option_1:
-                startActivity(new Intent(this, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                fragmentManager.beginTransaction()
+                        .replace(R.id.fragment_container_view, SummaryFragment.class, null)
+                        .addToBackStack(null)
+                        .commit();
+                break;
             case R.id.menu_option_2:
-                ItemsIntent = new Intent(this, ItemsActivity.class);
-                startActivity(ItemsIntent);
+                fragmentManager.beginTransaction()
+                        .replace(R.id.fragment_container_view, SalesFragment.class, null)
+                        .addToBackStack(null)
+                        .commit();
+                break;
             case R.id.menu_option_3:
-                ItemsIntent = new Intent(this, ItemsActivity.class);
-                startActivity(ItemsIntent);
+                fragmentManager.beginTransaction()
+                        .replace(R.id.fragment_container_view, SalesFragment.class, null)
+                        .addToBackStack(null)
+                        .commit();
+                break;
             case R.id.menu_option_4:
-                ItemsIntent = new Intent(this, ItemsActivity.class);
-                startActivity(ItemsIntent);
+                fragmentManager.beginTransaction()
+                        .replace(R.id.fragment_container_view, SalesFragment.class, null)
+                        .addToBackStack(null)
+                        .commit();
+                break;
         }
         //close navigation drawer
         mDrawerLayout.closeDrawer(GravityCompat.START);
