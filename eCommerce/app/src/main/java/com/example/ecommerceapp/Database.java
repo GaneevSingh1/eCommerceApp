@@ -52,8 +52,8 @@ public class Database extends SQLiteOpenHelper {
         }
     }
 
-    public List<Item> getAllItems() {
-        List<Item> returnList = new ArrayList<>();
+    public ArrayList<Item> getAllItems() {
+        ArrayList<Item> returnList = new ArrayList<>();
 
         String queryString = "SELECT * FROM " + CUSTOMER_TABLE;
 
