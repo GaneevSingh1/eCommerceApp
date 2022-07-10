@@ -76,4 +76,18 @@ public class Database extends SQLiteOpenHelper {
         db.close();
         return returnList;
     }
+
+    public boolean deleteItem(Item item){
+        String queryString = "DELETE FROM " + CUSTOMER_TABLE + " WHERE " + COLUMN_ID + " = " + item.getId();
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor cursor = db.rawQuery(queryString, null);
+
+        if(cursor.moveToFirst()){
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
