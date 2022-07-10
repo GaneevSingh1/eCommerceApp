@@ -51,7 +51,15 @@ public class AddItemFragment extends Fragment {
                 List<Item> allItems = database.getAllItems();
 
                 Toast.makeText(getContext(), allItems.get(0).getName() + " $" + allItems.get(0).getSellPrice(), Toast.LENGTH_SHORT).show();
+
+                ItemsFragment.updateList();
+
+                closeFragment();
             }
         });
+    }
+
+    protected void closeFragment(){
+        getActivity().onBackPressed();
     }
 }

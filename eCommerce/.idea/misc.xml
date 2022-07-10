@@ -9,6 +9,7 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.16572367350260414" />
         <entry key="app/src/main/res/layout/fragment_add_item.xml" value="0.20222317229585293" />
         <entry key="app/src/main/res/layout/fragment_customers.xml" value="0.20222317229585293" />
+        <entry key="app/src/main/res/layout/fragment_item_details.xml" value="0.20222317229585293" />
         <entry key="app/src/main/res/layout/fragment_items.xml" value="0.19777069091796878" />
         <entry key="app/src/main/res/layout/fragment_sales.xml" value="0.20222317229585293" />
         <entry key="app/src/main/res/layout/fragment_summary.xml" value="0.21277618408203125" />
